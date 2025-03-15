@@ -25,6 +25,8 @@
             gap: 2px;
             width: 306px;
             background: black;
+            position: relative; /* Add this */
+            left: 20px; 
         }
         .puzzle-piece {
             width: 100px;
