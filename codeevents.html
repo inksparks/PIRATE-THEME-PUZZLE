@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pirate Treasure Puzzle</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #0a0f1e;
+            color: white;
+        }
+        .puzzle-container {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            grid-template-rows: repeat(3, 100px);
+            gap: 2px;
+            width: 306px;
+            margin: 20px auto;
+            background: black;
+        }
+        .puzzle-piece {
+            width: 100px;
+            height: 100px;
+            background-size: 300px 300px;
+            cursor: pointer;
+            border: 1px solid white;
+        }
+        .hidden {
+            background-color: black;
+            border: none;
+        }
+        .treasure {
+            display: none;
+            margin-top: 20px;
+        }
+        .message {
+            display: none;
+            font-size: 20px;
+            color: gold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Solve the Puzzle to Reveal the Treasure!</h2>
+    <div class="puzzle-container" id="puzzle-container"></div>
+    <img src="treasure.png" class="treasure" id="treasure" alt="Treasure Chest">
+    <div class="message" id="message">Congratulations! You unlocked this treasure!sample linkk</div>
+    <script>
+        const puzzleContainer = document.getElementById('puzzle-container');
+        const treasure = document.getElementById('treasure');
+        const message = document.getElementById('message');
+        
+        let positions = [
+            [0, 0], [50, 0], [100, 0],
+            [0, 50], [50, 50], [100, 50],
+            [0, 100], [50, 100], [null, null]
+        ];
+        
+        let shuffledPositions = [...positions].sort(() => Math.random() - 0.5);
+
+        function createPuzzle() {
+            puzzleContainer.innerHTML = '';
+            shuffledPositions.forEach((pos, index) => {
+                let piece = document.createElement('div');
+                piece.classList.add('puzzle-piece');
+                if (pos[0] !== null) {
+                    piece.style.backgroundImage = "url('pirate.png.webp')";
+                    piece.style.backgroundPosition = `${pos[0]}% ${pos[1]}%`;
+                } else {
+                    piece.classList.add('hidden');
+                }
+                piece.dataset.index = index;
+                piece.addEventListener('click', () => movePiece(index));
+                puzzleContainer.appendChild(piece);
+            });
+        }
+
+        function movePiece(index) {
+            let emptyIndex = shuffledPositions.findIndex(pos => pos[0] === null);
+            let validMoves = [emptyIndex - 1, emptyIndex + 1, emptyIndex - 3, emptyIndex + 3];
+            if (validMoves.includes(index)) {
+                [shuffledPositions[index], shuffledPositions[emptyIndex]] = [shuffledPositions[emptyIndex], shuffledPositions[index]];
+                createPuzzle();
+                checkWin();
+            }
+        }
+        
+        function checkWin() {
+            if (JSON.stringify(shuffledPositions) === JSON.stringify(positions)) {
+                treasure.style.display = 'block';
+                message.style.display = 'block';
+            }
+        }
+
+        createPuzzle();
+    </script>
+</body>
+</html>
