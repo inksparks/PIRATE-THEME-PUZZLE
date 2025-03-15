@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,8 +24,8 @@
             gap: 2px;
             width: 306px;
             background: black;
-            position: relative; /* Add this */
-            left: 20px; 
+            position: relative;
+            left: 20px; /* Adjusted for alignment */
         }
         .puzzle-piece {
             width: 100px;
@@ -138,3 +137,4 @@
     </script>
 </body>
 </html>
+
