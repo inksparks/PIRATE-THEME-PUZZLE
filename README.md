@@ -24,7 +24,7 @@
             gap: 2px;
             width: 306px;
             background: black;
-            left: 70px; /* Adjusted for alignment */
+            left: 65px; /* Adjusted for alignment */
         }
         .puzzle-piece {
             width: 100px;
