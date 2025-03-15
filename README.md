@@ -25,7 +25,7 @@
             width: 306px;
             background: black;
             position: relative;
-            left: 75px; /* Adjusted for alignment */
+            left: 20px; /* Adjusted for alignment */
         }
         .puzzle-piece {
             width: 100px;
@@ -86,14 +86,15 @@
         }
 
         function isSolvable(puzzle) {
-            let flatArray = puzzle.flat().filter(num => num !== null);
+            let flatArray = puzzle.map(pos => pos[0] !== null ? pos[0] + pos[1] * 3 : null).filter(num => num !== null);
             let inversions = 0;
+
             for (let i = 0; i < flatArray.length; i++) {
                 for (let j = i + 1; j < flatArray.length; j++) {
                     if (flatArray[i] > flatArray[j]) inversions++;
                 }
             }
-            return inversions % 2 === 0;
+            return inversions % 2 === 0;  // True if even, solvable for a 3x3 grid
         }
         
         function createPuzzle() {
@@ -137,4 +138,3 @@
     </script>
 </body>
 </html>
-
