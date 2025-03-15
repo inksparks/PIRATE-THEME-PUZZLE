@@ -1,4 +1,3 @@
-# PIRATE-THEME-PUZZLE
 <!DOCTYPE html>
 <html lang="en">
 <head>
