@@ -24,7 +24,7 @@
             gap: 2px;
             width: 306px;
             background: black;
-            margin-left: -20px; /* Centers it */
+            margin-left: 60px; /* Centers it */
             
         }
         .puzzle-piece {
