@@ -64,7 +64,7 @@
     <div class="puzzle-container" id="puzzle-container"></div>
     <div class="message" id="message">Congratulations!</div>
     <div class="congrats-message" id="congrats-message">Congratulations! You have to click  <a href="https://forms.gle/cJ3UL4ekajnLfmxu9" style="color: #FFD700; text-decoration: none;">TREASURE </a> <a 
-    href="https://inksparks.github.io/PIRATE-THEME-PUZZLE/" style="color: #FFD700; text-decoration: underline;">Unlock Here! </a></div> 
+    href="https://inksparks.github.io/PIRATE-THEME-PUZZLE/" style="color: #FFD700; text-decoration: underline;">Register Here! </a></div> 
     <img src="pirate.png.webp" alt="Complete Puzzle" class="full-image" id="fullImage">
     <script>
         const puzzleContainer = document.getElementById('puzzle-container');
